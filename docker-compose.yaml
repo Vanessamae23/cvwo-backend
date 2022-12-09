@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  backend:
+    build: .
+    image: api
+    environment:
+      DB_URL: tcp(34.124.227.78:3306)
+      DB_DATABASE: cvwo
+      DB_USERNAME: root
+      DB_PASSWORD: makmae
+      SECRET_KEY: 'secret'
+
+  #root:makmae@tcp(34.124.227.78:3306)/cvwo
