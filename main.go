@@ -1,10 +1,11 @@
 package main
 
 import (
+
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/vanessamae23/cvwo/database"
 	"github.com/vanessamae23/cvwo/routes"
-	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {

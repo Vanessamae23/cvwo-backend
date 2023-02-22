@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"fmt"
 	"strconv"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/vanessamae23/cvwo/database"
 	"github.com/vanessamae23/cvwo/models"
@@ -39,7 +41,7 @@ func AllCommentsByForumId(c *fiber.Ctx) error {
 
 func UpdateComment(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
-	comment := models.Forum{
+	comment := models.Comment{
 		Id: uint(id),
 	}
 
@@ -52,12 +54,13 @@ func UpdateComment(c *fiber.Ctx) error {
 }
 
 func DeleteComment(c *fiber.Ctx) error {
+	fmt.Println("SDSSDDS")
 	id, _ := strconv.Atoi(c.Params("id"))
-	comment := models.Forum{
+	comment := models.Comment{
 		Id: uint(id),
 	}
-
-	database.DB.Where("id", id).Delete(&comment)
+	print(&comment)	
+	database.DB.Delete(&comment)
 	return nil
 }
 
