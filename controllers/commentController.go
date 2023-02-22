@@ -37,3 +37,27 @@ func AllCommentsByForumId(c *fiber.Ctx) error {
 	return c.JSON(comments)
 }
 
+func UpdateComment(c *fiber.Ctx) error {
+	id, _ := strconv.Atoi(c.Params("id"))
+	comment := models.Forum{
+		Id: uint(id),
+	}
+
+	if err := c.BodyParser(&comment); err != nil {
+		return err
+	}
+
+	database.DB.Model(&comment).Updates(comment)
+	return c.JSON(comment)
+}
+
+func DeleteComment(c *fiber.Ctx) error {
+	id, _ := strconv.Atoi(c.Params("id"))
+	comment := models.Forum{
+		Id: uint(id),
+	}
+
+	database.DB.Where("id", id).Delete(&comment)
+	return nil
+}
+

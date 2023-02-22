@@ -29,4 +29,6 @@ func Setup(app *fiber.App) {
 	//Comment sections
 	app.Post("/api/comment/:forum_id", controllers.CreateComment)
 	app.Get("/api/comment/:forum_id", controllers.AllCommentsByForumId)
+	app.Delete("/api/comment/:id", controllers.DeleteComment)
+	app.Put("/api/comment/:id", controllers.UpdateComment)
 }
